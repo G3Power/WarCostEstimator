@@ -18,19 +18,21 @@
     .hormuz-ships-subtitle { font-size: var(--text-sm); color: var(--color-text-muted); }
     .hormuz-ships-back { display: inline-flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-6); font-size: var(--text-sm); color: var(--color-blue); text-decoration: none; }
     .hormuz-ships-back:hover { text-decoration: underline; }
-    .hormuz-map-wrap {
-      max-width: var(--content-wide);
-      margin: 0 auto;
+    .hormuz-ships-open {
+      max-width: var(--content-default);
+      margin: 0 auto var(--space-8);
+      padding: var(--space-10);
+      background: var(--color-surface-2);
       border: 1px solid var(--color-divider);
       border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: var(--color-surface-2);
+      text-align: center;
     }
-    .hormuz-map-wrap iframe { display: block; width: 100%; height: 600px; border: 0; }
-    .hormuz-map-embed {
-      width: 100%;
-      min-height: 600px;
-      background: var(--color-surface-dynamic);
+    .hormuz-ships-open p { margin-bottom: var(--space-4); color: var(--color-text-muted); font-size: var(--text-sm); }
+    .hormuz-ships-open .hormuz-ships-links { justify-content: center; margin-top: var(--space-6); }
+    .hormuz-ships-open .hormuz-ships-links a {
+      padding: var(--space-4) var(--space-6);
+      font-size: var(--text-base);
+      font-weight: 500;
     }
     .hormuz-ships-note {
       max-width: var(--content-default);
@@ -98,22 +100,17 @@
       <p class="hormuz-ships-subtitle">Real-time vessel positions via AIS (Automatic Identification System). The strait has been closed to commercial transit since March 1, 2026. Map data provided by third-party AIS aggregators.</p>
     </div>
 
-    <div class="hormuz-map-wrap">
-      <iframe
-        src="https://www.marinetraffic.com/en/ais/home/centerx:56.25/centery:26.56/zoom:9"
-        title="Strait of Hormuz live ship traffic — MarineTraffic"
-        class="hormuz-map-embed"
-      ></iframe>
-    </div>
-
-    <div class="hormuz-ships-note">
-      <p><strong>About this map</strong></p>
-      <p>Vessel positions are updated in real time from AIS broadcasts. Coverage and update frequency depend on shore stations and satellite AIS. During conflict, some vessels may turn off AIS or data may be delayed.</p>
-      <p><strong>Open in a new tab for full controls (zoom, filters, vessel details):</strong></p>
+    <div class="hormuz-ships-open">
+      <p>Live AIS ship tracking for the Strait of Hormuz is provided by third-party services. Their maps cannot be embedded here, so open one of the trackers below in a new tab to see real-time vessel positions.</p>
       <div class="hormuz-ships-links">
         <a href="https://www.marinetraffic.com/en/ais/home/centerx:56.25/centery:26.56/zoom:9" target="_blank" rel="noopener noreferrer">MarineTraffic — Strait of Hormuz</a>
         <a href="https://www.marinevesseltraffic.com/HORMUZ-STRAIT/ship-traffic-tracker" target="_blank" rel="noopener noreferrer">Marine Vessel Traffic — Hormuz</a>
       </div>
+    </div>
+
+    <div class="hormuz-ships-note">
+      <p><strong>About AIS tracking</strong></p>
+      <p>Vessel positions are updated in real time from AIS (Automatic Identification System) broadcasts. Coverage and update frequency depend on shore stations and satellite AIS. During the closure, some vessels may turn off AIS or data may be delayed.</p>
     </div>
   </main>
 
