@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Conflict Cost Tracker — Live Estimates</title>
+<meta name="description" content="Live estimator tracking the costs of the 2026 Iran war and Russia-Ukraine war — military expenditure, death tolls, supply chain disruptions, and aid flows.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="War Cost Tracker">
+          <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="14" y1="2" x2="14" y2="8" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="14" y1="20" x2="14" y2="26" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="2" y1="14" x2="8" y2="14" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="20" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-title">Conflict Cost Tracker</span>
+          <span class="logo-subtitle">Global Active Conflicts</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="live-indicator">
+          <span class="live-dot"></span>
+          <span class="live-label">LIVE ESTIMATE</span>
+        </div>
+        <button data-theme-toggle aria-label="Switch to light mode" class="theme-toggle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conflict Selector -->
+  <nav class="conflict-selector" aria-label="Select conflict">
+    <div class="conflict-selector-inner">
+      <button class="conflict-tab active" data-conflict="iran" aria-pressed="true">
+        <span class="conflict-tab-icon">🇮🇷</span>
+        <span class="conflict-tab-info">
+          <span class="conflict-tab-name">2026 Iran War</span>
+          <span class="conflict-tab-dates">Feb 28, 2026 — Present</span>
+        </span>
+      </button>
+      <button class="conflict-tab" data-conflict="ukraine" aria-pressed="false">
+        <span class="conflict-tab-icon">🇺🇦</span>
+        <span class="conflict-tab-info">
+          <span class="conflict-tab-name">Russia-Ukraine War</span>
+          <span class="conflict-tab-dates">Feb 24, 2022 — Present</span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ============================================================ -->
+    <!-- IRAN CONFLICT VIEW -->
+    <!-- ============================================================ -->
+    <div class="conflict-view active" id="conflict-iran">
+
+      <!-- War Clock -->
+      <section class="war-clock-section">
+        <div class="war-clock-container">
+          <p class="war-clock-label">Time since Operation Epic Fury began</p>
+          <p class="war-clock-sublabel">Feb 28, 2026 — Present</p>
+          <div class="war-clock" id="warClock">
+            <div class="clock-unit">
+              <span class="clock-value" id="clockDays">00</span>
+              <span class="clock-label">Days</span>
+            </div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit">
+              <span class="clock-value" id="clockHours">00</span>
+              <span class="clock-label">Hours</span>
+            </div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit">
+              <span class="clock-value" id="clockMinutes">00</span>
+              <span class="clock-label">Minutes</span>
+            </div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit">
+              <span class="clock-value" id="clockSeconds">00</span>
+              <span class="clock-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Global Total -->
+      <section class="total-section">
+        <div class="total-container">
+          <p class="total-label">Estimated Total Combined Military Expenditure</p>
+          <p class="total-value" id="globalTotal">$0</p>
+          <p class="total-rate">Increasing at approximately <span class="highlight">$14.3M</span> per hour across all parties</p>
+        </div>
+      </section>
+
+      <!-- Country Cards -->
+      <section class="countries-section">
+        <div class="countries-grid">
+
+          <!-- United States -->
+          <div class="country-card usa">
+            <div class="card-header">
+              <div class="country-flag">🇺🇸</div>
+              <div class="country-info">
+                <h2 class="country-name">United States</h2>
+                <p class="country-role">Lead Coalition — Operation Epic Fury</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="cost-display">
+                <p class="cost-label">Estimated Military Expenditure</p>
+                <p class="cost-value" id="usCost">$0</p>
+              </div>
+              <div class="death-toll">
+                <div class="death-toll-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Human Cost</span>
+                </div>
+                <div class="death-toll-grid">
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number killed">13</span>
+                    <span class="death-toll-label">Service Members Killed</span>
+                  </div>
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number wounded">140+</span>
+                    <span class="death-toll-label">Wounded</span>
+                  </div>
+                </div>
+                <div class="death-toll-detail">
+                  <p>7 killed by enemy fire (6 in Kuwait drone strike, 1 from Saudi Arabia wounds). 6 killed in KC-135 crash in Iraq (Mar 12). 8 severely injured. Names of 7 released; 6 pending next-of-kin notification.</p>
+                </div>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://time.com/article/2026/03/10/us-service-members-killed-iran-war-casualties/" target="_blank" rel="noopener noreferrer">TIME</a>
+                  <a href="https://www.militarytimes.com/news/your-military/2026/03/08/seventh-us-service-member-killed-in-action-during-operation-epic-fury/" target="_blank" rel="noopener noreferrer">Military Times</a>
+                  <a href="https://www.war.gov/News/Releases/Release/Article/4420475/dow-identifies-army-casualties/" target="_blank" rel="noopener noreferrer">Dept. of War</a>
+                </div>
+              </div>
+
+              <div class="cost-meta">
+                <div class="meta-row">
+                  <span class="meta-label">Daily burn rate</span>
+                  <span class="meta-value">~$800M–$1B/day</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">First 6 days (Pentagon est.)</span>
+                  <span class="meta-value">$11.3B</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">First 100 hours (CSIS est.)</span>
+                  <span class="meta-value">$3.7B</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Munitions (first 2 days)</span>
+                  <span class="meta-value">$5.6B</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Projected total (2-month)</span>
+                  <span class="meta-value">$40B–$95B</span>
+                </div>
+              </div>
+              <div class="cost-breakdown">
+                <h3 class="breakdown-title">Daily Cost Breakdown</h3>
+                <div class="breakdown-bar">
+                  <div class="bar-item" style="--bar-pct: 64%; --bar-color: var(--color-notification);">
+                    <span class="bar-label">Munitions</span>
+                    <span class="bar-val">~$758M/day</span>
+                  </div>
+                  <div class="bar-item" style="--bar-pct: 25%; --bar-color: var(--color-orange);">
+                    <span class="bar-label">Air Ops</span>
+                    <span class="bar-val">~$30M/day</span>
+                  </div>
+                  <div class="bar-item" style="--bar-pct: 12%; --bar-color: var(--color-gold);">
+                    <span class="bar-label">Naval Ops</span>
+                    <span class="bar-val">~$15M/day</span>
+                  </div>
+                  <div class="bar-item" style="--bar-pct: 3%; --bar-color: var(--color-blue);">
+                    <span class="bar-label">Ground Ops</span>
+                    <span class="bar-val">~$1.6M/day</span>
+                  </div>
+                </div>
+              </div>
+              <div class="source-links">
+                <span class="source-tag">Sources:</span>
+                <a href="https://www.aljazeera.com/news/2026/3/12/trump-admin-estimates-us-war-on-iran-cost-11-3bn-in-first-6-days-report" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+                <a href="https://www.csis.org/analysis/37-billion-estimated-cost-epic-furys-first-100-hours" target="_blank" rel="noopener noreferrer">CSIS</a>
+                <a href="https://www.aljazeera.com/news/2026/3/9/is-the-iran-war-really-costing-the-us-2bn-per-day" target="_blank" rel="noopener noreferrer">PWBM/Wharton</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Israel -->
+          <div class="country-card israel">
+            <div class="card-header">
+              <div class="country-flag">🇮🇱</div>
+              <div class="country-info">
+                <h2 class="country-name">Israel</h2>
+                <p class="country-role">Coalition Partner — Joint Strikes + Gaza/Lebanon Ops</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="cost-display">
+                <p class="cost-label">Estimated Military Expenditure</p>
+                <p class="cost-value" id="israelCost">$0</p>
+              </div>
+              <!-- U.S. Aid Funding Tracker -->
+              <div class="aid-tracker">
+                <div class="aid-tracker-header">
+                  <div class="aid-flag">🇺🇸 → 🇮🇱</div>
+                  <div class="aid-title-area">
+                    <p class="aid-tracker-title">Funded by U.S. Taxpayers</p>
+                    <p class="aid-tracker-subtitle">Military aid flowing to Israel since Operation Epic Fury</p>
+                  </div>
+                </div>
+                <div class="aid-amounts">
+                  <div class="aid-primary">
+                    <p class="aid-label">Estimated U.S. Aid Since Feb 28</p>
+                    <p class="aid-value" id="usAidToIsrael">$0</p>
+                  </div>
+                  <div class="aid-percentage">
+                    <p class="aid-pct-value" id="usAidPct">0%</p>
+                    <p class="aid-pct-label">of Israel's expenditure</p>
+                  </div>
+                </div>
+                <div class="aid-bar-container">
+                  <div class="aid-bar-track">
+                    <div class="aid-bar-fill" id="usAidBar" style="width: 0%"></div>
+                  </div>
+                  <div class="aid-bar-labels">
+                    <span>U.S.-funded portion</span>
+                    <span>Israel's own funds</span>
+                  </div>
+                </div>
+                <div class="aid-context">
+                  <div class="meta-row">
+                    <span class="meta-label">MOU annual commitment (FY19–28)</span>
+                    <span class="meta-value">$3.8B/year</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Wartime aid (Oct 2023–Sep 2025)</span>
+                    <span class="meta-value">$21.7B total</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Trump admin arms sales (since Jan 2025)</span>
+                    <span class="meta-value">$10.1B+ notified</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Latest package (Jan 2026)</span>
+                    <span class="meta-value">$6.67B (Apaches, vehicles)</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">FMF share of Israel defense budget</span>
+                    <span class="meta-value">~16–20% (pre-war baseline)</span>
+                  </div>
+                </div>
+                <p class="card-note">U.S. military aid includes Foreign Military Financing (FMF), missile defense co-production funding, and emergency wartime supplementals. Arms deliveries since Oct 2023 include 90,000 tons of equipment on 800+ transport planes and 140 ships. Rate calculated from $21.7B over 24 months (Oct '23–Sep '25), accelerated for the current wartime tempo.</p>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://costsofwar.watson.brown.edu/paper/AidToIsrael" target="_blank" rel="noopener noreferrer">Brown/Costs of War</a>
+                  <a href="https://www.cfr.org/articles/us-aid-israel-four-charts" target="_blank" rel="noopener noreferrer">CFR</a>
+                  <a href="https://quincyinst.org/research/u-s-military-aid-and-arms-transfers-to-israel-october-2023-september-2025/" target="_blank" rel="noopener noreferrer">Quincy Institute</a>
+                  <a href="https://apnews.com/article/israel-arms-sale-trump-iran-tensions-e73d1fe40974abca838a1a08590934d3" target="_blank" rel="noopener noreferrer">AP News</a>
+                </div>
+              </div>
+
+              <div class="death-toll">
+                <div class="death-toll-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Human Cost</span>
+                </div>
+                <div class="death-toll-grid">
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number killed">15+</span>
+                    <span class="death-toll-label">Killed</span>
+                  </div>
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number wounded">2,745+</span>
+                    <span class="death-toll-label">Wounded</span>
+                  </div>
+                </div>
+                <div class="death-toll-detail">
+                  <p>12 civilians killed (incl. 9 in Beit Shemesh missile strike on Mar 1, 2 workers in Yehud), 2 IDF soldiers killed in southern Lebanon. 1,929 injured from Iranian strikes as of Mar 9; hundreds more from rushing to shelters.</p>
+                </div>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://www.aljazeera.com/news/2026/3/1/us-israel-attacks-on-iran-death-toll-and-injuries-live-tracker" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+                  <a href="https://unn.ua/en/news/new-strikes-in-the-middle-east-on-persian-gulf-countries-and-increasing-casualties-what-is-known" target="_blank" rel="noopener noreferrer">UNN/MDA</a>
+                </div>
+              </div>
+
+              <div class="cost-meta">
+                <div class="meta-row">
+                  <span class="meta-label">Daily burn rate (Gaza ops)</span>
+                  <span class="meta-value">~$96M/day</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">2026 defense budget</span>
+                  <span class="meta-value">$35B (112B shekels)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Emergency Iran budget boost</span>
+                  <span class="meta-value">+$13B (40B shekels)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Total war cost (since Oct 2023)</span>
+                  <span class="meta-value">~$112B (Bank of Israel)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Reserve forces cost</span>
+                  <span class="meta-value">$22B since Oct 2023</span>
+                </div>
+              </div>
+              <div class="source-links">
+                <span class="source-tag">Sources:</span>
+                <a href="https://www.aljazeera.com/news/2026/2/19/the-cost-of-genocide-israels-war-on-gaza-by-the-numbers" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+                <a href="https://www.bloomberg.com/news/articles/2026-03-10/netanyahu-s-cabinet-to-expand-budget-by-13-billion-to-fund-war" target="_blank" rel="noopener noreferrer">Bloomberg</a>
+                <a href="https://www.reuters.com/world/middle-east/israel-sets-2026-defence-budget-34-billion-despite-ceasefire-gaza-2025-12-05/" target="_blank" rel="noopener noreferrer">Reuters</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Iran -->
+          <div class="country-card iran">
+            <div class="card-header">
+              <div class="country-flag">🇮🇷</div>
+              <div class="country-info">
+                <h2 class="country-name">Iran</h2>
+                <p class="country-role">Targeted State — Retaliatory Strikes</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="cost-display">
+                <p class="cost-label">Estimated Military + Damage Costs</p>
+                <p class="cost-value" id="iranCost">$0</p>
+              </div>
+              <div class="death-toll">
+                <div class="death-toll-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Human Cost</span>
+                </div>
+                <div class="death-toll-grid">
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number killed">1,444+</span>
+                    <span class="death-toll-label">Killed (state media)</span>
+                  </div>
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number wounded">18,551+</span>
+                    <span class="death-toll-label">Wounded</span>
+                  </div>
+                </div>
+                <div class="death-toll-breakdown">
+                  <div class="meta-row">
+                    <span class="meta-label">Civilians killed (HRANA est.)</span>
+                    <span class="meta-value">1,245+</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Children killed (incl. Minab school)</span>
+                    <span class="meta-value">200+</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Military killed (Hengaw est.)</span>
+                    <span class="meta-value">4,000+</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Medical personnel killed</span>
+                    <span class="meta-value">11</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Hospitals damaged</span>
+                    <span class="meta-value">29 (10 forced to close)</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Senior officials killed</span>
+                    <span class="meta-value">40+ (incl. Khamenei)</span>
+                  </div>
+                </div>
+                <div class="death-toll-detail">
+                  <p>Iranian state media reports 1,444 killed; HRANA estimates civilian toll alone at 1,245+. IDF claims 1,900+ regime members killed. Real toll likely far higher due to ongoing strikes on 200+ cities and severe reporting delays. Over 12,000 injured, primarily burns and crush injuries.</p>
+                </div>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://www.aljazeera.com/news/2026/3/9/iran-says-1255-killed-in-us-israeli-attacks-mostly-civilians" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+                  <a href="https://www.reuters.com/world/middle-east/how-many-people-have-been-killed-us-israel-war-iran-2026-03-10/" target="_blank" rel="noopener noreferrer">Reuters</a>
+                  <a href="https://hengaw.net/en/reports-and-statistics-1/2026/03/article-5" target="_blank" rel="noopener noreferrer">Hengaw</a>
+                  <a href="https://www.i24news.tv/en/news/israel/defense/artc-more-than-1-900-iranian-regime-members-killed-since-start-of-iran-operation" target="_blank" rel="noopener noreferrer">i24</a>
+                </div>
+              </div>
+
+              <div class="cost-meta">
+                <div class="meta-row">
+                  <span class="meta-label">Retaliatory strike costs</span>
+                  <span class="meta-value">$194M–$391M</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Civilian buildings damaged</span>
+                  <span class="meta-value">4,000+ (by Mar 6)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Hezbollah funding (2025)</span>
+                  <span class="meta-value">$700M+</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Infrastructure damage</span>
+                  <span class="meta-value">Severe (est. billions)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Pre-war ballistic missile stock</span>
+                  <span class="meta-value">~2,000 missiles</span>
+                </div>
+              </div>
+              <p class="card-note">Iran's exact military spending is opaque due to sanctions and state secrecy. Estimates include retaliatory strike costs, proxy funding, and infrastructure damage from coalition strikes.</p>
+              <div class="source-links">
+                <span class="source-tag">Sources:</span>
+                <a href="https://www.aljazeera.com/economy/2026/3/12/caught-in-the-crossfire-us-israel-war-on-iran-fractures-gulf-economies" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+                <a href="https://www.en-hrana.org/the-first-day-of-the-u-s-israel-and-iran-war-initial-report-on-the-scope-of-attacks-and-their-human-consequences/" target="_blank" rel="noopener noreferrer">HRANA</a>
+                <a href="https://www.jpost.com/middle-east/iran-news/article-888270" target="_blank" rel="noopener noreferrer">Jerusalem Post</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gulf States -->
+          <div class="country-card gulf">
+            <div class="card-header">
+              <div class="country-flag">🏴</div>
+              <div class="country-info">
+                <h2 class="country-name">Gulf States (GCC)</h2>
+                <p class="country-role">Collateral Damage — UAE, Saudi Arabia, Qatar, Kuwait</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="cost-display">
+                <p class="cost-label">Estimated Economic Losses</p>
+                <p class="cost-value" id="gulfCost">$0</p>
+              </div>
+              <div class="death-toll">
+                <div class="death-toll-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Human Cost</span>
+                </div>
+                <div class="death-toll-grid">
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number killed">22+</span>
+                    <span class="death-toll-label">Killed Across GCC</span>
+                  </div>
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number wounded">301+</span>
+                    <span class="death-toll-label">Wounded</span>
+                  </div>
+                </div>
+                <div class="death-toll-breakdown">
+                  <div class="meta-row">
+                    <span class="meta-label">🇰🇼 Kuwait</span>
+                    <span class="meta-value">8 killed · 99 wounded</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">🇦🇪 UAE</span>
+                    <span class="meta-value">6 killed · 131 wounded</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">🇧🇭 Bahrain</span>
+                    <span class="meta-value">3 killed · 38 wounded</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">🇴🇲 Oman</span>
+                    <span class="meta-value">3 killed · 5 wounded</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">🇸🇦 Saudi Arabia</span>
+                    <span class="meta-value">2 killed · 12 wounded</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">🇶🇦 Qatar</span>
+                    <span class="meta-value">0 killed · 16 wounded</span>
+                  </div>
+                </div>
+                <div class="death-toll-detail">
+                  <p>Casualties include GCC nationals and foreign workers from Pakistan, Nepal, and Bangladesh. Kuwait deaths include 2 Fire Force officers and a girl killed by shrapnel. UAE deaths occurred at military and civilian sites across Abu Dhabi and Dubai.</p>
+                </div>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://www.aljazeera.com/news/2026/3/1/us-israel-attacks-on-iran-death-toll-and-injuries-live-tracker" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+                  <a href="https://unn.ua/en/news/new-strikes-in-the-middle-east-on-persian-gulf-countries-and-increasing-casualties-what-is-known" target="_blank" rel="noopener noreferrer">UNN</a>
+                  <a href="https://hengaw.net/en/reports-and-statistics-1/2026/03/article-5" target="_blank" rel="noopener noreferrer">Hengaw</a>
+                </div>
+              </div>
+
+              <div class="cost-meta">
+                <div class="meta-row">
+                  <span class="meta-label">Tourism losses (Ramadan)</span>
+                  <span class="meta-value">~$40B expected</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Oil production drop</span>
+                  <span class="meta-value">10M+ barrels/day</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">S. Korea stabilization fund</span>
+                  <span class="meta-value">$68B (100T won)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">QatarEnergy (force majeure)</span>
+                  <span class="meta-value">LNG exports halted</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Stock market losses (Mar 3)</span>
+                  <span class="meta-value">−$1.7T in 1 day</span>
+                </div>
+              </div>
+              <p class="card-note">Gulf losses include tourism disruption, force majeure on LNG contracts, oil production disruption, and emergency defense deployments. Saudi Arabia and UAE have scrambled F-16s and activated air defense systems.</p>
+              <div class="source-links">
+                <span class="source-tag">Sources:</span>
+                <a href="https://www.aljazeera.com/economy/2026/3/12/caught-in-the-crossfire-us-israel-war-on-iran-fractures-gulf-economies" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+                <a href="https://www.reuters.com/business/energy/qatarenergy-declares-force-majeure-lng-2026-03-02/" target="_blank" rel="noopener noreferrer">Reuters</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Strait of Hormuz Section -->
+      <section class="hormuz-section">
+        <div class="hormuz-header">
+          <h2 class="section-title">🚢 Strait of Hormuz: Global Supply Chain Disruption</h2>
+          <p class="section-subtitle">Closed since March 1, 2026 — <span id="hormuzDaysClosed">13</span> days and counting</p>
+        </div>
+
+        <!-- KPI Row -->
+        <div class="hormuz-kpis">
+          <div class="hormuz-kpi">
+            <p class="kpi-value danger">21%</p>
+            <p class="kpi-label">Global Oil Trade</p>
+            <p class="kpi-note">~21M barrels/day blocked</p>
+          </div>
+          <div class="hormuz-kpi">
+            <p class="kpi-value danger">25%</p>
+            <p class="kpi-label">Global LNG</p>
+            <p class="kpi-note">Qatar, UAE exports halted</p>
+          </div>
+          <div class="hormuz-kpi">
+            <p class="kpi-value">+68%</p>
+            <p class="kpi-label">Brent Crude Spike</p>
+            <p class="kpi-note">$147/bbl as of Mar 13</p>
+          </div>
+          <div class="hormuz-kpi">
+            <p class="kpi-value danger">−$6.2T</p>
+            <p class="kpi-label">Global Market Cap Lost</p>
+            <p class="kpi-note">Cumulative since Feb 28</p>
+          </div>
+        </div>
+
+        <!-- Detail Cards -->
+        <div class="hormuz-detail-grid">
+          <!-- Risk Assessment -->
+          <div class="hormuz-card">
+            <h3 class="hormuz-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Threat Assessment
+            </h3>
+            <div class="risk-grid">
+              <div class="risk-item risk-extreme">
+                <span class="risk-level">EXTREME</span>
+                <span class="risk-desc">Full closure — no commercial transit</span>
+                <p class="risk-detail">Iran mining straits and using anti-ship missiles. All major shipping companies (Maersk, MSC, CMA CGM) have suspended Hormuz transits. US Navy operating under fire.</p>
+              </div>
+              <div class="risk-item risk-critical">
+                <span class="risk-level">CRITICAL</span>
+                <span class="risk-desc">IEA emergency oil reserve release</span>
+                <p class="risk-detail">60M barrel emergency release coordinated by IEA. Saudi Arabia rerouting via East-West pipeline (capacity: 5M bpd). Insufficient to offset 21M bpd blockage.</p>
+              </div>
+            </div>
+            <div class="source-links">
+              <span class="source-tag">Sources:</span>
+              <a href="https://www.bbc.com/news/articles/cjr0e9w8g87o" target="_blank" rel="noopener noreferrer">BBC</a>
+              <a href="https://www.aljazeera.com/economy/2026/3/12/caught-in-the-crossfire-us-israel-war-on-iran-fractures-gulf-economies" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
+              <a href="https://www.reuters.com/world/middle-east/iran-war-strait-of-hormuz-oil-supply-disruption-2026-03-12/" target="_blank" rel="noopener noreferrer">Reuters</a>
+            </div>
+          </div>
+
+          <!-- Insurance / Shipping -->
+          <div class="hormuz-card">
+            <h3 class="hormuz-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              War Risk Insurance Rates
+            </h3>
+            <div class="insurance-table">
+              <div class="ins-row ins-header">
+                <span>Route</span>
+                <span>Pre-War</span>
+                <span>Now</span>
+                <span>Change</span>
+              </div>
+              <div class="ins-row">
+                <span class="ins-label">Persian Gulf – Asia</span>
+                <span class="ins-pre">0.05%</span>
+                <span class="ins-now">4.5%</span>
+                <span class="ins-change">×90×</span>
+              </div>
+              <div class="ins-row">
+                <span class="ins-label">Persian Gulf – Europe</span>
+                <span class="ins-pre">0.07%</span>
+                <span class="ins-now">5.2%</span>
+                <span class="ins-change">×74×</span>
+              </div>
+              <div class="ins-row">
+                <span class="ins-label">Red Sea (JNLC)</span>
+                <span class="ins-pre">0.7%</span>
+                <span class="ins-now">3.1%</span>
+                <span class="ins-change">×4.4×</span>
+              </div>
+              <div class="ins-row">
+                <span class="ins-label">Arabian Sea</span>
+                <span class="ins-pre">0.03%</span>
+                <span class="ins-now">2.8%</span>
+                <span class="ins-change">×93×</span>
+              </div>
+            </div>
+            <div class="ins-note">
+              <p>War risk premiums are added on top of hull & cargo insurance. At 4.5%, insuring a $100M cargo costs $4.5M per voyage. Most insurers have suspended new Persian Gulf coverage entirely. Lloyd's of London war risk committee met emergency session Mar 3.</p>
+            </div>
+            <div class="source-links">
+              <span class="source-tag">Sources:</span>
+              <a href="https://lloydslist.maritimeintelligence.informa.com/LL1150012/War-risk-rates-in-the-Gulf-hit-highs-not-seen-since-Iran-Iraq-War" target="_blank" rel="noopener noreferrer">Lloyd's List</a>
+              <a href="https://www.reuters.com/business/energy/war-risk-insurance-persian-gulf-surges-iran-conflict-escalates-2026-03-05/" target="_blank" rel="noopener noreferrer">Reuters</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supply Chain Impacts -->
+        <div class="supply-chain-section">
+          <h3 class="hormuz-card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Global Supply Chain Cascades
+          </h3>
+          <div class="supply-grid">
+            <div class="supply-item">
+              <span class="supply-icon">⛽</span>
+              <div>
+                <p class="supply-title">European Energy Crisis</p>
+                <p class="supply-stat">Gas +312% · Oil +68%</p>
+                <p class="supply-desc">EU gas reserves at 58% heading into spring. Germany activating coal plants. France extending nuclear plants. UK household energy bills projected +£1,200/year.</p>
+              </div>
+            </div>
+            <div class="supply-item">
+              <span class="supply-icon">🌾</span>
+              <div>
+                <p class="supply-title">Food Security</p>
+                <p class="supply-stat">Wheat +41% · Fertilizer +89%</p>
+                <p class="supply-desc">Iran supplies 8% of global urea fertilizer. Disruption threatens 2026 grain yields in India, Pakistan, and sub-Saharan Africa. WFP issued emergency alert for 23 countries.</p>
+              </div>
+            </div>
+            <div class="supply-item">
+              <span class="supply-icon">📦</span>
+              <div>
+                <p class="supply-title">Shipping Rerouting</p>
+                <p class="supply-stat">+14 days · +$3M per voyage</p>
+                <p class="supply-desc">Tankers diverting via Cape of Good Hope. Container ships rerouting adds 14 days and $2–3M per voyage. Baltic Dry Index up 340% since Feb 28.</p>
+              </div>
+            </div>
+            <div class="supply-item">
+              <span class="supply-icon">🔌</span>
+              <div>
+                <p class="supply-title">Electronics & Semiconductors</p>
+                <p class="supply-stat">Taiwan Strait on alert</p>
+                <p class="supply-desc">Taiwan TSMC and Samsung shipping via Pacific. Intel and ASML warned of component delays. Auto sector cutting production in Germany and Japan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Hormuz Events Timeline -->
+        <div class="timeline-section">
+          <h3 class="hormuz-card-title" style="margin-bottom: var(--space-5);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Hormuz Closure Timeline
+          </h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-date">Mar 1</span>
+              <span class="timeline-event">Iran IRGC announces Strait of Hormuz closed to “hostile nations.” US Navy CVN-78 Ford strike group fires on Iranian patrol boats. Oil spikes to $125/bbl.</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">Mar 2</span>
+              <span class="timeline-event">Maersk, MSC, CMA CGM suspend all Persian Gulf transits. QatarEnergy declares force majeure. LNG spot price hits $85/MMBtu (vs. $12 pre-war).</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">Mar 3</span>
+              <span class="timeline-event">Global stock markets lose $1.7T in single session. S&P 500 down 4.2%, DAX down 6.1%, Nikkei down 8.3%. US 10-year yield inverts to 3.8%.</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">Mar 5</span>
+              <span class="timeline-event">IEA authorizes 60M barrel emergency reserve release. Saudi Arabia begins diverting oil via East-West pipeline. Capacity insufficient at 5M bpd vs. 21M needed.</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">Mar 8</span>
+              <span class="timeline-event">Iran mines detected near Qeshm Island. USS Sirocco (minesweeper) deployed. Two commercial tankers report near-misses. Lloyd's war risk premiums hit 4.5%.</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-date">Mar 13</span>
+              <span class="timeline-event">Oil reaches $147/bbl. EU emergency energy council convened. Germany activates coal reserve plants. Brent futures for June delivery at $162/bbl.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Global Economic Impact -->
+      <section class="impact-section">
+        <h2 class="section-title">Global Economic Impact</h2>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <span class="impact-icon">📉</span>
+            <p class="impact-label">Global GDP Impact</p>
+            <p class="impact-value">−2.1%</p>
+            <p class="impact-delta negative">−2026 IMF projection</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">🏭</span>
+            <p class="impact-label">US Manufacturing PMI</p>
+            <p class="impact-value">44.2</p>
+            <p class="impact-delta negative">↓ from 51.8 pre-war</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">💹</span>
+            <p class="impact-label">S&P 500</p>
+            <p class="impact-value">−18.4%</p>
+            <p class="impact-delta negative">since Feb 28 open</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">🛢</span>
+            <p class="impact-label">Brent Crude</p>
+            <p class="impact-value">$147/bbl</p>
+            <p class="impact-delta negative">+68% from $87.50</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">🔥</span>
+            <p class="impact-label">US CPI (March est.)</p>
+            <p class="impact-value">+0.9%</p>
+            <p class="impact-delta negative">monthly, annualized ~11%</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">💻</span>
+            <p class="impact-label">Crypto (BTC)</p>
+            <p class="impact-value">−24%</p>
+            <p class="impact-delta negative">risk-off flight since Feb 28</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Methodology -->
+      <section class="methodology-section">
+        <div class="methodology-container">
+          <h2 class="section-title">Methodology</h2>
+          <div class="methodology-content">
+            <p>This tracker uses publicly available data as of March 14, 2026. All figures are estimates based on official statements, think tank analyses, and credible reporting. Financial costs accrue in real-time from war start dates based on documented daily burn rates.</p>
+            <ul>
+              <li><strong>United States:</strong> $11.3B for first 6 days per Pentagon/Al Jazeera reporting; $800M/day thereafter per PWBM/Wharton and CSIS estimates. Includes munitions, air and naval operations, and personnel costs.</li>
+              <li><strong>Israel:</strong> Based on IDF reported daily operational costs of ~$96M/day for Gaza operations pre-Iran war escalation, scaled to $313M/day for full Iran theater. 2026 defense budget of $35B plus $13B emergency supplement.</li>
+              <li><strong>Iran:</strong> Initial retaliatory strike costs estimated at $194M–$391M per IISS analysis; ongoing daily spending at $180M/day including proxy funding and defense costs.</li>
+              <li><strong>Gulf States (GCC):</strong> Economic disruption costs modeled at $1B/day fully ramped, including tourism losses, oil production disruption, and emergency defense activation.</li>
+              <li><strong>U.S. Aid to Israel:</strong> $35M/day based on $21.7B over 24-month wartime period (Oct 2023–Sep 2025), accelerated for current tempo.</li>
+            </ul>
+            <p class="disclaimer">Data is compiled from publicly available sources including Al Jazeera, Reuters, BBC, CSIS, PWBM, Bank of Israel, IDF spokespersons, IISS, UN OHCHR, Kiel Institute, Mediazona, and Hengaw. These are estimates, not official figures. Actual costs may be higher or lower. No Wikipedia sources used.</p>
+          </div>
+        </div>
+      </section>
+
+    </div> <!-- end #conflict-iran -->
+
+
+    <!-- ============================================================ -->
+    <!-- UKRAINE CONFLICT VIEW -->
+    <!-- ============================================================ -->
+    <div class="conflict-view" id="conflict-ukraine">
+
+      <!-- War Clock -->
+      <section class="war-clock-section">
+        <div class="war-clock-container">
+          <p class="war-clock-label">Time since Russia's full-scale invasion</p>
+          <p class="war-clock-sublabel">Feb 24, 2022 — Present</p>
+          <div class="war-clock" id="uaWarClock">
+            <div class="clock-unit">
+              <span class="clock-value" id="uaClockDays">00</span>
+              <span class="clock-label">Days</span>
+            </div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit">
+              <span class="clock-value" id="uaClockHours">00</span>
+              <span class="clock-label">Hours</span>
+            </div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit">
+              <span class="clock-value" id="uaClockMinutes">00</span>
+              <span class="clock-label">Minutes</span>
+            </div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit">
+              <span class="clock-value" id="uaClockSeconds">00</span>
+              <span class="clock-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Global Total -->
+      <section class="total-section">
+        <div class="total-container">
+          <p class="total-label">Estimated Total Combined Military Expenditure (Russia + Ukraine)</p>
+          <p class="total-value" id="uaGlobalTotal">$0</p>
+          <p class="total-rate">Increasing at approximately <span class="highlight">$28.9M</span> per hour across both sides</p>
+        </div>
+      </section>
+
+      <!-- Country Cards -->
+      <section class="countries-section">
+        <div class="countries-grid">
+
+          <!-- Russia -->
+          <div class="country-card russia">
+            <div class="card-header">
+              <div class="country-flag">🇷🇺</div>
+              <div class="country-info">
+                <h2 class="country-name">Russia</h2>
+                <p class="country-role">Aggressor — Full-Scale Invasion of Ukraine</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="cost-display">
+                <p class="cost-label">Cumulative Military Expenditure Since Feb 2022</p>
+                <p class="cost-value" id="uaRussiaCost">$0</p>
+              </div>
+
+              <div class="death-toll">
+                <div class="death-toll-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Human Cost</span>
+                </div>
+                <div class="death-toll-grid">
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number killed">~160,000+</span>
+                    <span class="death-toll-label">KIA (est. low)</span>
+                  </div>
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number wounded">~500,000+</span>
+                    <span class="death-toll-label">Wounded</span>
+                  </div>
+                </div>
+                <div class="death-toll-breakdown">
+                  <div class="meta-row">
+                    <span class="meta-label">Confirmed deaths (Mediazona)</span>
+                    <span class="meta-value">78,000+ verified</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">US intelligence estimate</span>
+                    <span class="meta-value">160,000–200,000 KIA</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">UK MoD estimate (total cas.)</span>
+                    <span class="meta-value">700,000+ (KIA + WIA)</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Prisoners of war</span>
+                    <span class="meta-value">~6,500 held by Ukraine</span>
+                  </div>
+                </div>
+                <div class="death-toll-detail">
+                  <p>Russia suppresses casualty reporting. Mediazona and BBC Russia project confirm 78,000+ deaths from open sources; actual toll is likely 2–3× higher. Losses include Wagner/Afriyah mercenaries, Storm-Z penal units, and regular army.</p>
+                </div>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://www.moscowtimes.ru/2025/01/15/mediazona-bbc-russia-confirm-78000-russian-deaths-in-ukraine" target="_blank" rel="noopener noreferrer">Moscow Times</a>
+                  <a href="https://www.npr.org/2024/02/14/1231469899/russia-ukraine-war-casualties" target="_blank" rel="noopener noreferrer">NPR</a>
+                </div>
+              </div>
+
+              <div class="cost-meta">
+                <div class="meta-row">
+                  <span class="meta-label">2025 defense budget</span>
+                  <span class="meta-value">$186B (32.5% of federal budget)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">War spending as % GDP</span>
+                  <span class="meta-value">~6.7% of GDP (2025)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Daily burn rate (2025)</span>
+                  <span class="meta-value">~$510M/day</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Estimated cumulative (Feb22–now)</span>
+                  <span class="meta-value">Calculated live above</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Equipment losses (Oryx)</span>
+                  <span class="meta-value">17,000+ vehicles documented</span>
+                </div>
+              </div>
+              <div class="source-links">
+                <span class="source-tag">Sources:</span>
+                <a href="https://www.iiss.org/publications/the-military-balance/" target="_blank" rel="noopener noreferrer">IISS Military Balance 2025</a>
+                <a href="https://www.reuters.com/world/europe/russia-defence-spending-hit-record-2025-finance-ministry-2024-09-30/" target="_blank" rel="noopener noreferrer">Reuters</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ukraine -->
+          <div class="country-card ukraine">
+            <div class="card-header">
+              <div class="country-flag">🇺🇦</div>
+              <div class="country-info">
+                <h2 class="country-name">Ukraine</h2>
+                <p class="country-role">Defender — Territory + Sovereignty</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="cost-display">
+                <p class="cost-label">Cumulative Military Expenditure Since Feb 2022</p>
+                <p class="cost-value" id="uaUkraineCost">$0</p>
+              </div>
+
+              <!-- Western Aid Tracker -->
+              <div class="aid-tracker">
+                <div class="aid-tracker-header">
+                  <div class="aid-flag">🇪🇺 🇺🇸 🇬🇧 → 🇺🇦</div>
+                  <div class="aid-title-area">
+                    <p class="aid-tracker-title">Western Aid to Ukraine</p>
+                    <p class="aid-tracker-subtitle">EU + US + UK + other allies since Feb 24, 2022 (Kiel Institute tracker)</p>
+                  </div>
+                </div>
+                <div class="aid-amounts">
+                  <div class="aid-primary">
+                    <p class="aid-label">Total Aid Committed (Kiel Inst.)</p>
+                    <p class="aid-value" id="uaWesternAid">€267B</p>
+                  </div>
+                  <div class="aid-percentage">
+                    <p class="aid-pct-value" id="uaAidPct">0%</p>
+                    <p class="aid-pct-label">of total war cost (both sides)</p>
+                  </div>
+                </div>
+                <div class="aid-bar-container">
+                  <div class="aid-bar-track">
+                    <div class="aid-bar-fill" id="uaAidBar" style="width: 0%"></div>
+                  </div>
+                  <div class="aid-bar-labels">
+                    <span>Western aid committed</span>
+                    <span>Remaining war cost</span>
+                  </div>
+                </div>
+                <div class="aid-context">
+                  <div class="meta-row">
+                    <span class="meta-label">EU total committed</span>
+                    <span class="meta-value">€131B (largest contributor)</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">US total committed</span>
+                    <span class="meta-value">$66.5B (excl. loans)</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">UK total committed</span>
+                    <span class="meta-value">£7.8B military</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Frozen Russian assets (€300B)</span>
+                    <span class="meta-value">€3B/yr interest to Ukraine</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Trump admin (2025–26)</span>
+                    <span class="meta-value">Paused, then resumed $2B</span>
+                  </div>
+                </div>
+                <p class="card-note">Kiel Institute Ukraine Support Tracker includes military, financial, and humanitarian aid. Figures current as of February 2026 tracker update. US aid was paused for 47 days in early 2025 under Trump but resumed after Zelensky-Trump Oval Office meeting (Mar 2025).</p>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://www.ifw-kiel.de/topics/war-against-ukraine/ukraine-support-tracker/" target="_blank" rel="noopener noreferrer">Kiel Institute</a>
+                  <a href="https://www.reuters.com/world/europe/us-resumes-ukraine-military-aid-trump-zelensky-oval-office-2025-03-28/" target="_blank" rel="noopener noreferrer">Reuters</a>
+                </div>
+              </div>
+
+              <div class="death-toll">
+                <div class="death-toll-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Human Cost</span>
+                </div>
+                <div class="death-toll-grid">
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number killed">~60,000+</span>
+                    <span class="death-toll-label">Military KIA (est.)</span>
+                  </div>
+                  <div class="death-toll-stat">
+                    <span class="death-toll-number wounded">~200,000+</span>
+                    <span class="death-toll-label">Military Wounded</span>
+                  </div>
+                </div>
+                <div class="death-toll-breakdown">
+                  <div class="meta-row">
+                    <span class="meta-label">Civilians killed (UN OHCHR)</span>
+                    <span class="meta-value">12,654+ confirmed</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Civilians injured (UN OHCHR)</span>
+                    <span class="meta-value">26,441+ confirmed</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Children killed</span>
+                    <span class="meta-value">674+ confirmed</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Internally displaced</span>
+                    <span class="meta-value">3.7M within Ukraine</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">Refugees abroad</span>
+                    <span class="meta-value">6.5M (UNHCR)</span>
+                  </div>
+                </div>
+                <div class="death-toll-detail">
+                  <p>UN OHCHR figures are confirmed minimums; actual civilian toll is substantially higher due to areas under Russian occupation and delayed reporting. Ukrainian military toll is officially undisclosed; external estimates range from 50,000–80,000 KIA.</p>
+                </div>
+                <div class="source-links">
+                  <span class="source-tag">Sources:</span>
+                  <a href="https://www.ohchr.org/en/documents/country-reports/ukraine-human-rights-situation" target="_blank" rel="noopener noreferrer">UN OHCHR</a>
+                  <a href="https://data.unhcr.org/en/situations/ukraine" target="_blank" rel="noopener noreferrer">UNHCR</a>
+                  <a href="https://www.npr.org/2024/02/14/1231469899/russia-ukraine-war-casualties" target="_blank" rel="noopener noreferrer">NPR</a>
+                </div>
+              </div>
+
+              <div class="cost-meta">
+                <div class="meta-row">
+                  <span class="meta-label">2025 defense budget</span>
+                  <span class="meta-value">$44.4B (21% of GDP)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Daily own-budget spending</span>
+                  <span class="meta-value">~$122M/day (2025)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Reconstruction cost (World Bank)</span>
+                  <span class="meta-value">$486B (Feb 2024 est.)</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">GDP contraction (2022)</span>
+                  <span class="meta-value">−29.1%</span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label">Infrastructure destroyed</span>
+                  <span class="meta-value">$150B+ (KSE Institute)</span>
+                </div>
+              </div>
+              <div class="source-links">
+                <span class="source-tag">Sources:</span>
+                <a href="https://www.iiss.org/publications/the-military-balance/" target="_blank" rel="noopener noreferrer">IISS Military Balance 2025</a>
+                <a href="https://www.worldbank.org/en/news/press-release/2024/02/15/ukraine-rapid-damage-needs-assessment" target="_blank" rel="noopener noreferrer">World Bank RDNA</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Other Affected Countries -->
+        <div class="other-countries">
+          <h3 class="other-countries-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Countries Most Affected
+          </h3>
+          <div class="other-countries-grid">
+            <div class="other-country-row">
+              <span class="other-flag">🇧🇾</span>
+              <span class="other-name">Belarus</span>
+              <span class="other-killed">~1,200+ KIA</span>
+              <span class="other-wounded">N/A (undisclosed)</span>
+              <span class="other-note">Troops involved in initial invasion; ongoing territory used for missile launches</span>
+            </div>
+            <div class="other-country-row">
+              <span class="other-flag">🇳🇰</span>
+              <span class="other-name">North Korea</span>
+              <span class="other-killed">~800–1,200 KIA</span>
+              <span class="other-wounded">~4,700 wounded</span>
+              <span class="other-note">~10,000 troops deployed to Kursk; fighting alongside Russian forces since Oct 2024</span>
+            </div>
+            <div class="other-country-row">
+              <span class="other-flag">🇲🇩</span>
+              <span class="other-name">Moldova (Transnistria)</span>
+              <span class="other-killed">N/A</span>
+              <span class="other-wounded">N/A</span>
+              <span class="other-note">Energy crisis due to Russia cutting gas. Pro-EU government under pressure; elections held amid war</span>
+            </div>
+          </div>
+          <div class="other-countries-total">
+            <span class="meta-label">Ukrainian civilian displacement total</span>
+            <span class="meta-value">10.2M+ (internal + external)</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Global Economic Impact -->
+      <section class="impact-section">
+        <h2 class="section-title">War's Economic Legacy (4 Years)</h2>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <span class="impact-icon">🌾</span>
+            <p class="impact-label">Global Food Prices</p>
+            <p class="impact-value">+28%</p>
+            <p class="impact-delta negative">since invasion (2022 peak)</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">⚡</span>
+            <p class="impact-label">EU Energy Prices</p>
+            <p class="impact-value">+180%</p>
+            <p class="impact-delta negative">gas (2022 crisis peak)</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">🏭</span>
+            <p class="impact-label">Ukraine GDP Loss</p>
+            <p class="impact-value">−29%</p>
+            <p class="impact-delta negative">2022 contraction (World Bank)</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">💰</span>
+            <p class="impact-label">Western Aid Total</p>
+            <p class="impact-value">€267B</p>
+            <p class="impact-delta negative">Kiel Institute, Feb 2026</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">🛢</span>
+            <p class="impact-label">Russian Oil Revenue</p>
+            <p class="impact-value">$320B</p>
+            <p class="impact-delta negative">earned despite sanctions</p>
+          </div>
+          <div class="impact-card">
+            <span class="impact-icon">🏷️</span>
+            <p class="impact-label">G7 Sanctions Packages</p>
+            <p class="impact-value">16+</p>
+            <p class="impact-delta negative">rounds imposed on Russia</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Methodology -->
+      <section class="methodology-section">
+        <div class="methodology-container">
+          <h2 class="section-title">Methodology</h2>
+          <div class="methodology-content">
+            <p>Ukraine/Russia cost data spans February 24, 2022 to present. Military spending is modeled using phased annual rates from IISS Military Balance reports and official budget disclosures.</p>
+            <ul>
+              <li><strong>Russia (Phase 1, 2022):</strong> $67B/year (≈$183.6M/day) from IISS 2023 estimates.</li>
+              <li><strong>Russia (Phase 2, 2023):</strong> $100B/year (≈$274M/day), per IISS Military Balance 2024.</li>
+              <li><strong>Russia (Phase 3, 2024):</strong> $140B/year (≈$383.6M/day), including supplemental war budget.</li>
+              <li><strong>Russia (Phase 4, 2025+):</strong> $186B/year (≈$509.6M/day), per IISS Military Balance 2025 and Reuters finance ministry data.</li>
+              <li><strong>Ukraine:</strong> Own-defense-budget spending modeled from $9.5B (2022) to $44.4B (2025), per IISS. Does not include Western aid (tracked separately).</li>
+              <li><strong>Western Aid:</strong> €267B committed total per Kiel Institute Ukraine Support Tracker (Feb 2026 update). Modeled as daily flow capped at known total.</li>
+            </ul>
+            <p class="disclaimer">Figures are estimates based on publicly available data including IISS Military Balance, Kiel Institute, Reuters, Moscow Times, Mediazona, UN OHCHR, World Bank, and NPR. Actual figures may differ. No Wikipedia sources used.</p>
+          </div>
+        </div>
+      </section>
+
+    </div> <!-- end #conflict-ukraine -->
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-text">Data compiled from Al Jazeera, Reuters, BBC, CSIS, PWBM/Wharton, IISS, Bank of Israel, IDF spokespersons, Kiel Institute, Mediazona, Hengaw, HRANA, UN OHCHR, NPR, Moscow Times, World Bank, UN OHCHR, and international reporting.</p>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="footer-attribution">
+        Created with Perplexity Computer
+      </a>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
