@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <style>
     .hormuz-ships-page { padding: var(--space-6) var(--space-6) var(--space-12); }
     .hormuz-ships-header { margin-bottom: var(--space-8); }
@@ -18,6 +19,16 @@
     .hormuz-ships-subtitle { font-size: var(--text-sm); color: var(--color-text-muted); }
     .hormuz-ships-back { display: inline-flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-6); font-size: var(--text-sm); color: var(--color-blue); text-decoration: none; }
     .hormuz-ships-back:hover { text-decoration: underline; }
+    .hormuz-map-wrap {
+      max-width: var(--content-wide);
+      margin: 0 auto var(--space-6);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--color-surface-2);
+    }
+    .hormuz-map-wrap iframe { display: block; width: 100%; border: 0; }
+    #hormuz-custom-map { width: 100%; height: 560px; background: var(--color-surface-dynamic); }
     .hormuz-ships-open {
       max-width: var(--content-default);
       margin: 0 auto var(--space-8);
@@ -100,12 +111,29 @@
       <p class="hormuz-ships-subtitle">Real-time vessel positions via AIS (Automatic Identification System). The strait has been closed to commercial transit since March 1, 2026. Map data provided by third-party AIS aggregators.</p>
     </div>
 
+    <div class="hormuz-map-wrap">
+      <script type="text/javascript">
+        var width = "100%";
+        var height = "560";
+        var latitude = "26.56";
+        var longitude = "56.25";
+        var zoom = "9";
+        var names = false;
+      </script>
+      <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
+    </div>
+
     <div class="hormuz-ships-open">
-      <p>Live AIS ship tracking for the Strait of Hormuz is provided by third-party services. Their maps cannot be embedded here, so open one of the trackers below in a new tab to see real-time vessel positions.</p>
+      <p>If the map above doesn’t load, or for full controls and vessel details, open a live tracker in a new tab:</p>
       <div class="hormuz-ships-links">
         <a href="https://www.marinetraffic.com/en/ais/home/centerx:56.25/centery:26.56/zoom:9" target="_blank" rel="noopener noreferrer">MarineTraffic — Strait of Hormuz</a>
         <a href="https://www.marinevesseltraffic.com/HORMUZ-STRAIT/ship-traffic-tracker" target="_blank" rel="noopener noreferrer">Marine Vessel Traffic — Hormuz</a>
       </div>
+    </div>
+
+    <div class="hormuz-map-wrap" style="margin-top: var(--space-8);">
+      <p style="margin: 0; padding: var(--space-3) var(--space-4); font-size: var(--text-xs); color: var(--color-text-muted); border-bottom: 1px solid var(--color-divider);">Our map — Strait of Hormuz area (reference only; no live AIS data)</p>
+      <div id="hormuz-custom-map"></div>
     </div>
 
     <div class="hormuz-ships-note">
@@ -114,6 +142,7 @@
     </div>
   </main>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script>
     (function () {
       var toggle = document.querySelector('[data-theme-toggle]');
@@ -130,6 +159,15 @@
             : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
         });
       }
+    })();
+    (function () {
+      var el = document.getElementById('hormuz-custom-map');
+      if (!el) return;
+      var map = L.map('hormuz-custom-map').setView([26.56, 56.25], 9);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      L.marker([26.56, 56.25]).addTo(map).bindPopup('Strait of Hormuz');
     })();
   </script>
 </body>
