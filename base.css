@@ -14,8 +14,8 @@ html {
 
 body {
   min-height: 100dvh;
-  line-height: 1.6;
-  font-family: var(--font-body, sans-serif);
+  line-height: 1.55;
+  font-family: var(--font-body, Arial, Helvetica, sans-serif);
   font-size: var(--text-base);
   color: var(--color-text);
   background-color: var(--color-bg);
