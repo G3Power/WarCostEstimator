@@ -4,6 +4,8 @@
   "framework": null,
   "rewrites": [
     { "source": "/hormuz-ships", "destination": "/hormuz-ships.html" },
-    { "source": "/hormuz-ships/", "destination": "/hormuz-ships.html" }
+    { "source": "/hormuz-ships/", "destination": "/hormuz-ships.html" },
+    { "source": "/us-aid-israel", "destination": "/us-aid-israel.html" },
+    { "source": "/us-aid-israel/", "destination": "/us-aid-israel.html" }
   ]
 }

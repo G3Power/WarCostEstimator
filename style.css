@@ -1473,6 +1473,96 @@
   padding-top: var(--space-3);
 }
 
+.aid-page-link {
+  margin: var(--space-4) 0;
+  font-size: var(--text-sm);
+}
+
+.aid-page-link a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+.aid-page-link a:hover {
+  text-decoration: underline;
+}
+
+/* Footnote + popover (Israel card) */
+.aid-footnote-wrap {
+  position: relative;
+  margin-top: var(--space-6);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-divider);
+}
+
+.aid-footnote-trigger {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+  cursor: help;
+}
+
+.aid-footnote-trigger:hover {
+  color: var(--color-blue);
+}
+
+.aid-popover {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: var(--space-2);
+  width: min(380px, calc(100vw - var(--space-8)));
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+}
+
+.aid-footnote-wrap:hover .aid-popover,
+.aid-footnote-wrap.aid-popover-open .aid-popover,
+.aid-popover:hover {
+  display: block;
+}
+
+.aid-tracker--popover .aid-tracker-header {
+  margin-bottom: var(--space-3);
+}
+
+.aid-tracker--popover .aid-amounts {
+  margin-bottom: var(--space-3);
+}
+
+.aid-tracker--popover .aid-context {
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.aid-tracker--popover .card-note {
+  font-size: var(--text-xs);
+  margin-bottom: var(--space-3);
+}
+
+.aid-popover-more {
+  margin: 0;
+  font-size: var(--text-sm);
+}
+
+.aid-popover-more a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+.aid-popover-more a:hover {
+  text-decoration: underline;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .countries-grid {

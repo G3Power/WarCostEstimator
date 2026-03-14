@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>U.S. Military Aid to Israel | Conflict Cost Tracker</title>
+  <meta name="description" content="Live estimate of U.S. military aid to Israel since Operation Epic Fury began (Feb 28, 2026). Paid by U.S. taxpayers.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .aid-page { padding: var(--space-6) var(--space-6) var(--space-12); max-width: var(--content-default); margin: 0 auto; }
+    .aid-page-back { display: inline-flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-6); font-size: var(--text-sm); color: var(--color-blue); text-decoration: none; }
+    .aid-page-back:hover { text-decoration: underline; }
+    .aid-page-title { font-size: var(--text-xl); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-2); }
+    .aid-page-subtitle { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-8); }
+    .aid-page .aid-tracker { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-area" style="text-decoration: none; color: inherit;">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="14" cy="14" r="6" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="14" y1="2" x2="14" y2="8" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="14" y1="20" x2="14" y2="26" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="2" y1="14" x2="8" y2="14" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="20" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-title">Conflict Cost Tracker</span>
+          <span class="logo-subtitle">U.S. Aid to Israel</span>
+        </div>
+      </a>
+      <div class="header-right">
+        <div class="live-indicator">
+          <span class="live-dot"></span>
+          <span class="live-label">LIVE</span>
+        </div>
+        <button data-theme-toggle aria-label="Switch to light mode" class="theme-toggle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="aid-page">
+    <a href="index.html" class="aid-page-back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Cost Tracker
+    </a>
+    <h1 class="aid-page-title">U.S. Military Aid to Israel</h1>
+    <p class="aid-page-subtitle">Paid by U.S. taxpayers · Estimated since Operation Epic Fury began (Feb 28, 2026)</p>
+
+    <div class="aid-tracker">
+      <div class="aid-tracker-header">
+        <div class="aid-flag">🇺🇸 → 🇮🇱</div>
+        <div class="aid-title-area">
+          <p class="aid-tracker-title">Total U.S. aid so far</p>
+          <p class="aid-tracker-subtitle">Share of Israel’s war spending funded by the U.S.</p>
+        </div>
+      </div>
+      <div class="aid-amounts">
+        <div class="aid-primary">
+          <p class="aid-label">Estimated U.S. aid since Feb 28</p>
+          <p class="aid-value" id="usAidToIsrael">$0</p>
+        </div>
+        <div class="aid-percentage">
+          <p class="aid-pct-value" id="usAidPct">0%</p>
+          <p class="aid-pct-label">of Israel’s war spending</p>
+        </div>
+      </div>
+      <div class="aid-bar-container">
+        <div class="aid-bar-track">
+          <div class="aid-bar-fill" id="usAidBar" style="width: 0%"></div>
+        </div>
+        <div class="aid-bar-labels">
+          <span>U.S.-funded</span>
+          <span>Israel-funded</span>
+        </div>
+      </div>
+      <div class="aid-context">
+        <div class="meta-row">
+          <span class="meta-label">MOU annual commitment (FY19–28)</span>
+          <span class="meta-value">$3.8B/year</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Wartime aid (Oct 2023–Sep 2025)</span>
+          <span class="meta-value">$21.7B total</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Trump admin arms sales (since Jan 2025)</span>
+          <span class="meta-value">$10.1B+ notified</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Latest package (Jan 2026)</span>
+          <span class="meta-value">$6.67B (Apaches, vehicles)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">FMF share of Israel defense budget</span>
+          <span class="meta-value">~16–20% (pre-war baseline)</span>
+        </div>
+      </div>
+      <p class="card-note">U.S. military aid includes Foreign Military Financing (FMF), missile defense co-production funding, and emergency wartime supplementals. Arms deliveries since Oct 2023 include 90,000 tons of equipment on 800+ transport planes and 140 ships. Rate calculated from $21.7B over 24 months (Oct '23–Sep '25), accelerated for the current wartime tempo.</p>
+      <div class="source-links">
+        <span class="source-tag">Sources:</span>
+        <a href="https://costsofwar.watson.brown.edu/paper/AidToIsrael" target="_blank" rel="noopener noreferrer">Brown/Costs of War</a>
+        <a href="https://www.cfr.org/articles/us-aid-israel-four-charts" target="_blank" rel="noopener noreferrer">CFR</a>
+        <a href="https://quincyinst.org/research/u-s-military-aid-and-arms-transfers-to-israel-october-2023-september-2025/" target="_blank" rel="noopener noreferrer">Quincy Institute</a>
+        <a href="https://apnews.com/article/israel-arms-sale-trump-iran-tensions-e73d1fe40974abca838a1a08590934d3" target="_blank" rel="noopener noreferrer">AP News</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('[data-theme-toggle]');
+      var root = document.documentElement;
+      var theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      root.setAttribute('data-theme', theme);
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          theme = theme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', theme);
+          toggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+          toggle.innerHTML = theme === 'dark'
+            ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+            : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        });
+      }
+    })();
+    (function () {
+      var IRAN_WAR_START = new Date('2026-02-28T00:00:00Z');
+      var AID_DAILY = 35e6;
+      var AID_RATE_PER_MS = AID_DAILY / (24 * 60 * 60 * 1000);
+      var ISRAEL_DAILY = 313e6;
+      var ISRAEL_RATE_PER_MS = ISRAEL_DAILY / (24 * 60 * 60 * 1000);
+
+      function getUSAidToIsrael(elapsedMs) {
+        if (elapsedMs <= 0) return 0;
+        return elapsedMs * AID_RATE_PER_MS;
+      }
+      function getIsraelCost(elapsedMs) {
+        if (elapsedMs <= 0) return 0;
+        return elapsedMs * ISRAEL_RATE_PER_MS;
+      }
+      function formatCurrencyPrecise(amount) {
+        if (amount >= 1e12) return '$' + (amount / 1e12).toFixed(3) + 'T';
+        if (amount >= 1e9) return '$' + (amount / 1e9).toFixed(3) + 'B';
+        return '$' + Math.floor(amount).toLocaleString();
+      }
+
+      var aidEl = document.getElementById('usAidToIsrael');
+      var pctEl = document.getElementById('usAidPct');
+      var barEl = document.getElementById('usAidBar');
+
+      function update() {
+        var now = new Date();
+        var elapsedMs = now.getTime() - IRAN_WAR_START.getTime();
+        if (elapsedMs <= 0) { requestAnimationFrame(update); return; }
+        var usAid = getUSAidToIsrael(elapsedMs);
+        var israelCost = getIsraelCost(elapsedMs);
+        var aidPct = israelCost > 0 ? (usAid / israelCost) * 100 : 0;
+        if (aidEl) aidEl.textContent = formatCurrencyPrecise(usAid);
+        if (pctEl) pctEl.textContent = aidPct.toFixed(1) + '%';
+        if (barEl) barEl.style.width = Math.min(aidPct, 100).toFixed(1) + '%';
+        requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    })();
+  </script>
+</body>
+</html>

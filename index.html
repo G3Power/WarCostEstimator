@@ -232,65 +232,6 @@
                 <p class="cost-label">Estimated Military Expenditure</p>
                 <p class="cost-value" id="israelCost">$0</p>
               </div>
-              <!-- U.S. Aid Funding Tracker -->
-              <div class="aid-tracker">
-                <div class="aid-tracker-header">
-                  <div class="aid-flag">🇺🇸 → 🇮🇱</div>
-                  <div class="aid-title-area">
-                    <p class="aid-tracker-title">Funded by U.S. Taxpayers</p>
-                    <p class="aid-tracker-subtitle">Military aid flowing to Israel since Operation Epic Fury</p>
-                  </div>
-                </div>
-                <div class="aid-amounts">
-                  <div class="aid-primary">
-                    <p class="aid-label">Estimated U.S. Aid Since Feb 28</p>
-                    <p class="aid-value" id="usAidToIsrael">$0</p>
-                  </div>
-                  <div class="aid-percentage">
-                    <p class="aid-pct-value" id="usAidPct">0%</p>
-                    <p class="aid-pct-label">of Israel's expenditure</p>
-                  </div>
-                </div>
-                <div class="aid-bar-container">
-                  <div class="aid-bar-track">
-                    <div class="aid-bar-fill" id="usAidBar" style="width: 0%"></div>
-                  </div>
-                  <div class="aid-bar-labels">
-                    <span>U.S.-funded portion</span>
-                    <span>Israel's own funds</span>
-                  </div>
-                </div>
-                <div class="aid-context">
-                  <div class="meta-row">
-                    <span class="meta-label">MOU annual commitment (FY19–28)</span>
-                    <span class="meta-value">$3.8B/year</span>
-                  </div>
-                  <div class="meta-row">
-                    <span class="meta-label">Wartime aid (Oct 2023–Sep 2025)</span>
-                    <span class="meta-value">$21.7B total</span>
-                  </div>
-                  <div class="meta-row">
-                    <span class="meta-label">Trump admin arms sales (since Jan 2025)</span>
-                    <span class="meta-value">$10.1B+ notified</span>
-                  </div>
-                  <div class="meta-row">
-                    <span class="meta-label">Latest package (Jan 2026)</span>
-                    <span class="meta-value">$6.67B (Apaches, vehicles)</span>
-                  </div>
-                  <div class="meta-row">
-                    <span class="meta-label">FMF share of Israel defense budget</span>
-                    <span class="meta-value">~16–20% (pre-war baseline)</span>
-                  </div>
-                </div>
-                <p class="card-note">U.S. military aid includes Foreign Military Financing (FMF), missile defense co-production funding, and emergency wartime supplementals. Arms deliveries since Oct 2023 include 90,000 tons of equipment on 800+ transport planes and 140 ships. Rate calculated from $21.7B over 24 months (Oct '23–Sep '25), accelerated for the current wartime tempo.</p>
-                <div class="source-links">
-                  <span class="source-tag">Sources:</span>
-                  <a href="https://costsofwar.watson.brown.edu/paper/AidToIsrael" target="_blank" rel="noopener noreferrer">Brown/Costs of War</a>
-                  <a href="https://www.cfr.org/articles/us-aid-israel-four-charts" target="_blank" rel="noopener noreferrer">CFR</a>
-                  <a href="https://quincyinst.org/research/u-s-military-aid-and-arms-transfers-to-israel-october-2023-september-2025/" target="_blank" rel="noopener noreferrer">Quincy Institute</a>
-                  <a href="https://apnews.com/article/israel-arms-sale-trump-iran-tensions-e73d1fe40974abca838a1a08590934d3" target="_blank" rel="noopener noreferrer">AP News</a>
-                </div>
-              </div>
 
               <div class="death-toll">
                 <div class="death-toll-header">
@@ -344,6 +285,55 @@
                 <a href="https://www.aljazeera.com/news/2026/2/19/the-cost-of-genocide-israels-war-on-gaza-by-the-numbers" target="_blank" rel="noopener noreferrer">Al Jazeera</a>
                 <a href="https://www.bloomberg.com/news/articles/2026-03-10/netanyahu-s-cabinet-to-expand-budget-by-13-billion-to-fund-war" target="_blank" rel="noopener noreferrer">Bloomberg</a>
                 <a href="https://www.reuters.com/world/middle-east/israel-sets-2026-defence-budget-34-billion-despite-ceasefire-gaza-2025-12-05/" target="_blank" rel="noopener noreferrer">Reuters</a>
+              </div>
+
+              <div class="aid-footnote-wrap">
+                <span class="aid-footnote-trigger" id="aidFootnoteTrigger" tabindex="0" role="button" aria-describedby="aidPopover" aria-expanded="false">Funded by U.S. Taxpayers</span>
+                <div class="aid-popover" id="aidPopover" role="tooltip">
+                  <div class="aid-tracker aid-tracker--popover">
+                    <div class="aid-tracker-header">
+                      <div class="aid-flag">🇺🇸 → 🇮🇱</div>
+                      <div class="aid-title-area">
+                        <p class="aid-tracker-title">U.S. Military Aid to Israel</p>
+                        <p class="aid-tracker-subtitle">Since Operation Epic Fury (Feb 28, 2026)</p>
+                      </div>
+                    </div>
+                    <div class="aid-amounts">
+                      <div class="aid-primary">
+                        <p class="aid-label">Estimated U.S. aid since Feb 28</p>
+                        <p class="aid-value" id="usAidToIsrael">$0</p>
+                      </div>
+                      <div class="aid-percentage">
+                        <p class="aid-pct-value" id="usAidPct">0%</p>
+                        <p class="aid-pct-label">of Israel’s war spending</p>
+                      </div>
+                    </div>
+                    <div class="aid-bar-container">
+                      <div class="aid-bar-track">
+                        <div class="aid-bar-fill" id="usAidBar" style="width: 0%"></div>
+                      </div>
+                      <div class="aid-bar-labels">
+                        <span>U.S.-funded</span>
+                        <span>Israel-funded</span>
+                      </div>
+                    </div>
+                    <div class="aid-context">
+                      <div class="meta-row"><span class="meta-label">MOU (FY19–28)</span><span class="meta-value">$3.8B/year</span></div>
+                      <div class="meta-row"><span class="meta-label">Wartime aid (Oct 2023–Sep 2025)</span><span class="meta-value">$21.7B total</span></div>
+                      <div class="meta-row"><span class="meta-label">Trump arms sales (Jan 2025+)</span><span class="meta-value">$10.1B+ notified</span></div>
+                      <div class="meta-row"><span class="meta-label">Latest package (Jan 2026)</span><span class="meta-value">$6.67B</span></div>
+                    </div>
+                    <p class="card-note">Rate from $21.7B over 24 months (Oct ’23–Sep ’25), accelerated for current tempo. FMF, missile defense, supplementals.</p>
+                    <div class="source-links">
+                      <span class="source-tag">Sources:</span>
+                      <a href="https://costsofwar.watson.brown.edu/paper/AidToIsrael" target="_blank" rel="noopener noreferrer">Brown/Costs of War</a>
+                      <a href="https://www.cfr.org/articles/us-aid-israel-four-charts" target="_blank" rel="noopener noreferrer">CFR</a>
+                      <a href="https://quincyinst.org/research/u-s-military-aid-and-arms-transfers-to-israel-october-2023-september-2025/" target="_blank" rel="noopener noreferrer">Quincy</a>
+                      <a href="https://apnews.com/article/israel-arms-sale-trump-iran-tensions-e73d1fe40974abca838a1a08590934d3" target="_blank" rel="noopener noreferrer">AP News</a>
+                    </div>
+                    <p class="aid-popover-more"><a href="us-aid-israel.html">Full tracker →</a></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1197,5 +1187,20 @@
   </footer>
 
   <script src="./app.js"></script>
+  <script>
+    (function () {
+      var wrap = document.querySelector('.aid-footnote-wrap');
+      var trigger = document.getElementById('aidFootnoteTrigger');
+      var popover = document.getElementById('aidPopover');
+      if (!wrap || !trigger || !popover) return;
+      function open() { wrap.classList.add('aid-popover-open'); }
+      function close() { wrap.classList.remove('aid-popover-open'); }
+      function toggle() { wrap.classList.toggle('aid-popover-open'); }
+      trigger.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); toggle(); trigger.setAttribute('aria-expanded', wrap.classList.contains('aid-popover-open')); });
+      popover.addEventListener('click', function (e) { e.stopPropagation(); });
+      document.addEventListener('click', function () { close(); trigger.setAttribute('aria-expanded', 'false'); });
+      trigger.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); trigger.setAttribute('aria-expanded', wrap.classList.contains('aid-popover-open')); } });
+    })();
+  </script>
 </body>
 </html>
