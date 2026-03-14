@@ -673,6 +673,15 @@
   margin-top: var(--space-2);
 }
 
+.section-subtitle a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+.section-subtitle a:hover {
+  text-decoration: underline;
+}
+
 /* Hormuz KPIs */
 .hormuz-kpis {
   max-width: var(--content-wide);
