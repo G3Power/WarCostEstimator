@@ -2,6 +2,8 @@
 
 A live estimator tracking the costs of active global conflicts — military expenditure, death tolls, supply chain disruptions, and aid flows.
 
+**Live site:** [https://war-cost-estimator.vercel.app/](https://war-cost-estimator.vercel.app/)
+
 ## Conflicts Tracked
 
 - **2026 Iran War** (Feb 28, 2026 — Present): US, Israel, Iran, Gulf States expenditure with death tolls, Strait of Hormuz impact, and US aid to Israel tracking
