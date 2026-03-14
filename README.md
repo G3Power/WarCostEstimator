@@ -18,6 +18,17 @@ Development continues in **Cursor**.
   ```
   Then visit `http://localhost:8080`.
 
+## Deploy (GitHub Pages)
+
+1. Open the repo on GitHub: **https://github.com/G3Power/WarCostEstimator**
+2. Go to **Settings** → **Pages** (left sidebar).
+3. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+4. Choose branch **main**, folder **/ (root)**, then **Save**.
+5. Wait a minute or two. Your site will be at:
+   - **https://g3power.github.io/WarCostEstimator/**
+
+(To use a custom domain later, add a `CNAME` file and set it in Pages settings.)
+
 ## Tech Stack
 
 - Vanilla HTML/CSS/JS (no build tools)
