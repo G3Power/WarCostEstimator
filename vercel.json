@@ -1,5 +1,9 @@
 {
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/hormuz-ships", "destination": "/hormuz-ships.html" },
+    { "source": "/hormuz-ships/", "destination": "/hormuz-ships.html" }
+  ]
 }
